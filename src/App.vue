@@ -3,9 +3,13 @@
     <Tweet 
 
     v-for="tweet in tweets" 
-    :image="tweet.user.image" :name="tweet.user.name" :handle="tweet.user.handle" :timestamp="tweet.timestamp" :message="tweet.message"
+    :timestamp="tweet.timestamp" 
+    :message="tweet.message"
     :user="tweet.user"
     :key="tweet.id"
+    @like4="like5"
+    @dots2="dots3"
+    :edit="edit"
     />
   </div>
   
@@ -43,9 +47,23 @@ export default {
                 timestamp: "3h ago",
                 message: "here is what. i plan to accomplish today: \n\n2. bark loudly. but at nothing \n7. lose my ball under the couch\n7b. politely ask the human. to get my ball\n3. immediately lose it again. under the same couch\n4. big nap. you have worked hard\n2. repeat",
             },
-        ]
+        ],
+      
     }),
-    components: { Tweet }
+    methods: {
+      like5() {
+        this.isActive = !this.isActive;
+        
+      },
+      dots3() {
+        this.edit = !this.edit;//no coge el edit!!
+      }
+    },
+   
+    components: { Tweet },
+    props: {
+      edit: Boolean
+    }
 }
 </script>
 
@@ -157,5 +175,10 @@ export default {
     display: flex;
     justify-content: space-between;
     color: #536471;
+    
+  }
+  .active {
+    color: red;
+    
   }
 </style>

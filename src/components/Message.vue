@@ -1,12 +1,15 @@
 <template>
-  <p className="message"> {{message}} </p>
+  <p v-if="!edit" className="message"> {{message}} </p>
+  <input v-else type="text">
 </template>
 
 <script>
 export default {
     props: {
-        message: String
-    }
+        message: String,
+        edit: Boolean
+    },
+    edit: false
 }
 </script>
 
